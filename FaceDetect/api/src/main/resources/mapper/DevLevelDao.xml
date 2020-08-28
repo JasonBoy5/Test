@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.dao.DevLevelDao">
+	<!-- 目的：为dao接口方法提供sql语句配置 -->
+	<select id="queryByDevCode" resultType="DevLevel" parameterType="long">
+		<!-- 具体的sql -->
+		SELECT
+			dev_code,
+			dev_name,
+			site_code,
+			io_level
+		FROM
+			h_dev_lm
+		WHERE
+			dev_code = #{dev_code}
+	</select>
+	
+	<select id="queryAll" resultType="DevLevel">
+		SELECT
+			dev_code,
+			dev_name,
+			site_code,
+			io_level
+		FROM
+			h_dev_lm
+		WHERE
+			addr_iapdata = #{addr_iapdata}
+		LIMIT #{limit}
+		OFFSET #{offset}
+	</select>
+	
+</mapper>
